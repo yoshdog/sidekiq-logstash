@@ -22,7 +22,7 @@ module Sidekiq
           payload['job_status']      = 'fail'
           payload['error_message']   = exc.message
           payload['error']           = exc.class
-          payload['error_backtrace'] = %('#{exc.backtrace.join("\n")}')
+          payload['error_backtrace'] = %('#{exc.backtrace&.join("\n")}')
         else
           payload['message']      = "#{message}: done: #{payload['duration']} sec"
           payload['job_status']   = 'done'
